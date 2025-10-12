@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rajveer — Portfolio</title>
+  <meta name="description" content="Personal portfolio of Shivam Verma — front-end developer." />
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#94a3b8;--glass: rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef6;background:linear-gradient(180deg,#071021 0%, #07182a 100%);}
+    a{color:var(--accent);text-decoration:none}
+    header{position:sticky;top:0;background:linear-gradient(180deg, rgba(7,16,33,0.6), rgba(7,16,33,0.2));backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);}
+    .container{max-width:1100px;margin:0 auto;padding:28px 20px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .brand .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#06b6d4,#7c3aed);display:flex;align-items:center;justify-content:center;color:#041025}
+    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    .cta{padding:8px 14px;border-radius:10px;background:linear-gradient(90deg,#06b6d4,#7c3aed);font-weight:600}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;padding:60px 20px}
+    .hero-card{background:var(--card);padding:30px;border-radius:14px;box-shadow:0 8px 30px rgba(2,6,23,0.6);}
+    .name{font-size:28px;margin:0 0 6px}
+    .title{color:var(--muted);margin:0 0 10px}
+    .hero p{color: #c9d8e6;line-height:1.6}
+    .skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .skill{background:var(--glass);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    /* Projects */
+    .section{padding:40px 20px}
+    h2{margin:0 0 16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .project{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .project img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+    .project .meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+    .btn{display:inline-block;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);cursor:pointer}
+
+    /* Contact */
+    form{display:grid;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e6eef6}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{padding:24px 0;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      nav ul{display:none}
+      .nav .menu-toggle{display:block}
+      .mobile-menu{display:none}
+    }
+    @media (min-width:881px){.menu-toggle{display:none}}
+
+    /* simple modal */
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);visibility:hidden;opacity:0;transition:opacity .18s ease}
+    .modal.open{visibility:visible;opacity:1}
+    .modal .panel{background:#071426;padding:20px;border-radius:12px;max-width:720px;width:94%}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">RV</div>
+        <div>
+          <div style="font-size:15px">Rajveer</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Front-end developer</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="cta" href="#contact">Hire me</a>
+        <button class="menu-toggle btn" aria-label="menu">☰</button>
+      </div>
+    </div>
+    <div class="mobile-menu container" style="display:none;padding-top:0">
+      <ul style="flex-direction:column;gap:8px;display:flex;padding:12px 0">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <h1 class="name">Hi, I'm Rajveer 👋</h1>
+        <p class="title">I build delightful and accessible front-end experiences.</p>
+        <p>I'm a front-end developer with a focus on clean UI, performance and accessibility. I enjoy transforming ideas into polished interfaces.
+        </p>
+        <div class="skills" aria-hidden>
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">React</div>
+          <div class="skill">TypeScript</div>
+          <div class="skill">Accessibility</div>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:10px">
+          <a class="btn" href="#projects">See projects</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <aside>
+        <div style="background:linear-gradient(180deg,#04102a 0%, #081827 100%);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(3,8,20,0.6)">
+          <h3 style="margin:0 0 8px">Quick stats</h3>
+          <div style="color:var(--muted);font-size:14px">3+ years experience • 10+ projects • Open to freelance</div>
+          <div style="margin-top:12px">
+            <strong style="font-size:20px">Contact</strong>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">hello@example.com</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="grid" id="projectsGrid">
+        <!-- Project items injected by JS -->
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills & Tools</h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <div class="skill">Responsive design</div>
+        <div class="skill">CSS Grid / Flexbox</div>
+        <div class="skill">Vanilla JS</div>
+        <div class="skill">React</div>
+        <div class="skill">Git</div>
+        <div class="skill">Testing</div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px">
+        <div class="hero-card">
+          <form id="contactForm">
+            <label>
+              Name
+              <input type="text" id="name" required placeholder="Your name" />
+            </label>
+            <label>
+              Email
+              <input type="email" id="email" required placeholder="you@example.com" />
+            </label>
+            <label>
+              Message
+              <textarea id="message" required placeholder="Tell me about your project..."></textarea>
+            </label>
+            <div style="display:flex;gap:10px;align-items:center">
+              <button type="submit" class="cta">Send message</button>
+              <div id="formStatus" style="color:var(--muted);font-size:13px"></div>
+            </div>
+          </form>
+        </div>
+        <aside>
+          <div class="hero-card">
+            <h3>Availability</h3>
+            <p style="color:var(--muted);margin-top:6px">I’m available for freelance projects and full-time roles. Typical response time: within 24–48 hours.</p>
+            <p style="margin-top:12px">Follow me on <a href="#">GitHub</a> and <a href="#">LinkedIn</a>.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <div>© <span id="year"></span> Rajveer</div>
+      <div style="color:var(--muted)">Built with HTML, CSS & JavaScript</div>
+    </div>
+  </footer>
+
+  <!-- Modal for project details -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div class="panel">
+      <button id="closeModal" style="float:right" class="btn">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    // data for projects (replace with your own)
+    const projects = [
+      {id:1, title:'Portfolio Website', desc:'Personal portfolio with animations and responsive layout.', img:'https://picsum.photos/seed/p1/800/600', tags:['HTML','CSS','JS'], live:'#'},
+      {id:2, title:'Task Manager App', desc:'A small SPA to manage daily tasks with localStorage.', img:'https://picsum.photos/seed/p2/800/600', tags:['JavaScript'], live:'#'},
+      {id:3, title:'E-commerce UI', desc:'A product listing and cart UI prototype.', img:'https://picsum.photos/seed/p3/800/600', tags:['React','CSS'], live:'#'},
+      {id:4, title:'Photo Gallery', desc:'Responsive image gallery with lightbox.', img:'https://picsum.photos/seed/p4/800/600', tags:['HTML','CSS','JS'], live:'#'}
+    ];
+
+    const grid = document.getElementById('projectsGrid');
+    projects.forEach(p => {
+      const el = document.createElement('article');
+      el.className = 'project';
+      el.innerHTML = `
+        <img src="${p.img}" alt="${p.title}">
+        <h3 style="margin:8px 0 4px">${p.title}</h3>
+        <p style="color:var(--muted);font-size:14px">${p.desc}</p>
+        <div class="meta">
+          <div style="font-size:13px;color:var(--muted)">${p.tags.join(' • ')}</div>
+          <div style="display:flex;gap:8px">
+            <button class="btn" data-id="${p.id}">Details</button>
+            <a class="btn" href="${p.live}" target="_blank">Live</a>
+          </div>
+        </div>`;
+      grid.appendChild(el);
+    });
+
+    // modal logic
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modalContent');
+    grid.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-id]');
+      if(!btn) return;
+      const id = Number(btn.getAttribute('data-id'));
+      const p = projects.find(x=>x.id===id);
+      modalContent.innerHTML = `
+        <h2>${p.title}</h2>
+        <img src="${p.img}" alt="${p.title}" style="width:100%;border-radius:8px;margin-top:10px">
+        <p style="color:var(--muted);margin-top:10px">${p.desc}</p>
+        <p style="margin-top:8px">Tags: ${p.tags.join(', ')}</p>
+        <p style="margin-top:12px"><a href="${p.live}">Open live</a></p>
+      `;
+      modal.classList.add('open');
+    });
+    document.getElementById('closeModal').addEventListener('click', ()=> modal.classList.remove('open'));
+    modal.addEventListener('click', e => { if(e.target===modal) modal.classList.remove('open') });
+
+    // mobile menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    menuToggle.addEventListener('click', ()=> {
+      if(mobileMenu.style.display==='none' || mobileMenu.style.display==='') mobileMenu.style.display='block'; else mobileMenu.style.display='none';
+    });
+
+    // contact form stub
+    document.getElementById('contactForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Thanks — message simulated (replace with your form handler).';
+      e.target.reset();
+    });
+
+    // footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // small accessibility improvements
+    document.querySelectorAll('a, button').forEach(el=> el.setAttribute('tabindex','0'));
+  </script>
+</body>
+</html>
